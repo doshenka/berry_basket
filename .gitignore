@@ -46,7 +46,8 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
-
+/Library/
+/Temp/
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
@@ -70,3 +71,4 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Kalashnikov_Game/Library/
