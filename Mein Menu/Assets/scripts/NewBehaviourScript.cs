@@ -20,18 +20,4 @@ public class NewBehaviourScript : MonoBehaviour
         _test1.SetActive(true);
     }
 
-    public void SetSettings()
-    {
-        StartCoroutine(HideSettings()); 
-        Debug.Log("Settings");
-    }
-
-    IEnumerator HideSettings()
-    {
-        _test2.SetActive(false);
-        yield return new WaitForSeconds(2.0f);
-        _test2.SetActive(true);
-    }
-
-
 }
