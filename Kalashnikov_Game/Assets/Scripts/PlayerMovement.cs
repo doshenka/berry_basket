@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             target = Camera.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log("target is set");
         }
     }
     void SetAgentPosition()

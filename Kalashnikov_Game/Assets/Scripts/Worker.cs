@@ -41,6 +41,8 @@ public class Worker : MonoBehaviour
         Agent = GetComponent<NavMeshAgent>();
         Animator = GetComponent<Animator>();
         Agent.enabled = true;
+        Agent.updateRotation = false;
+        Agent.updateUpAxis = false;
     }
 
     private void FixedUpdate()
@@ -49,7 +51,7 @@ public class Worker : MonoBehaviour
         {
             target = workPoints[pointIndex % workPoints.Count].transform;
             distanceToNextPoint = Vector3.Distance(target.position, transform.position);
-            if (distanceToNextPoint > 1)
+            if (distanceToNextPoint > 4)
             {
                 Agent.enabled = true;
                 Agent.SetDestination(target.position);

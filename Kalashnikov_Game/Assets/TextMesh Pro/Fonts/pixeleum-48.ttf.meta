@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 0627a15749719f9408a7d77cccb5d511
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Pixeleum 48
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ab892175548384b47a97de43ce4cca10, type: 3}
+  - {fileID: 12800000, guid: 3b8a207db050f574aab065c7696525a5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 1
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
