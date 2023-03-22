@@ -8,6 +8,7 @@ public class Worker : MonoBehaviour
     public string name;
     public List<WorkPoint> workPoints;
     private NavMeshAgent Agent;
+   
     private float distanceToNextPoint;
     [SerializeField]
     private Transform target;
