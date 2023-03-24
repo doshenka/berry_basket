@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class loading : MonoBehaviour
 {
     public string scene_2 = "level1"; // для перехода к сцене
-    public GameObject loading_line; // для всей загрузки
-    public Image loading_line_image; // спрайт 
-    public Text loading_precent; // процент загрузки
-    public GameObject container_loading; // контейнер отдельный с загрузкой
+    public GameObject progress_bar; // для всей загрузки
+    public Image progress_bar_image; // спрайт 
+    public Text loading_text; // процент загрузки
+    public GameObject loading_image; // контейнер отдельный с загрузкой
 
     AsyncOperation async_operation; // куда сохраняется загрузка другой сцены
 
@@ -29,38 +29,35 @@ public class loading : MonoBehaviour
     }*/
 
     // асинхронная загрузка (с анимацией загрузки)
-    /*public void Async_load_btn()
+    public void Async_load_btn()
     {
         StartCoroutine("Async_load_COR");
-    }*/
-
-    // асинхронная загрузка (со сценой)
-    /*public void Scene_load_btn()
-    {
-        PlayerPrefs.SetString("current_scene", scene_2);
-        SceneManager.LoadScene("Loading_scene");
     }
 
+    // вернуться назад
+    
     public void Reload_btn()
     {
-        container_loading.SetActive(true);
+        loading_image.SetActive(true);
         SceneManager.LoadScene(0);
-    }*/
+    }
 
     //----загрузка
 
     //просто асинхр
-    /*IEnumerator Async_load_COR()
+    IEnumerator Async_load_COR()
     {
-        float load_progress;
+        float loading_progress;
         async_operation = SceneManager.LoadSceneAsync(scene_2);
-        loading_line.SetActive(true);
+        progress_bar.SetActive(true);
         while(!async_operation.isDone)
         {
-            load_progress = Mathf.Clamp01(async_operation.progress / 0.9f);
-            loading_text.text = $"loading... {(load_progress * 100).ToString("0")}%"
+            loading_progress = Mathf.Clamp01(async_operation.progress / 0.9f);
+            loading_text.text = $"loading... {(loading_progress * 100).ToString("0")}%";
+            progress_bar_image.fillAmount = loading_progress;
+            yield return null;
         }
-    }*/
+    }
 
 
     //асинхрон для сцены

@@ -16,11 +16,6 @@ public class menupanel : MonoBehaviour
         Application.LoadLevel("level1");
     }
 
-    public void StartMenu()
-    {
-        Application.LoadLevel("loading");
-    }
-
     public void MenuChange()
     {
         Menu.SetActive(true);
