@@ -9,12 +9,12 @@ public class menupanel : MonoBehaviour
     public GameObject Settings;
     public GameObject Developers;
 
-    [SerializeField] private GameObject _btnPlay;
+    /*[SerializeField] private GameObject _btnPlay;*/
 
-    public void StartGame()
+    /*public void StartGame()
     {
         Application.LoadLevel("level1");
-    }
+    }*/
 
     public void MenuChange()
     {
@@ -42,7 +42,7 @@ public class menupanel : MonoBehaviour
         Application.Quit();
     }
 
-    public void SetObject()
+    /*public void SetObject()
     {
         StartCoroutine(HideObject());
         Debug.Log("Hey");
@@ -52,5 +52,5 @@ public class menupanel : MonoBehaviour
         _btnPlay.SetActive(false);
         yield return new WaitForSeconds(5.0f);
         _btnPlay.SetActive(true);
-    }
+    }*/
 }
