@@ -11,10 +11,10 @@ public class menupanel : MonoBehaviour
 
     /*[SerializeField] private GameObject _btnPlay;*/
 
-    /*public void StartGame()
+    public void StartGame()
     {
         Application.LoadLevel("level1");
-    }*/
+    }
 
     public void MenuChange()
     {

@@ -6,10 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class load_script : MonoBehaviour
 {
-    /*public GameObject Container_Load;*/
     public Slider Slide_line;
     public float Timer;
-    public string name_next_scene;
 
     /*// Start is called before the first frame update
     void Start()
@@ -53,7 +51,7 @@ public class load_script : MonoBehaviour
 
         if (Timer >= 16)
         {
-            Application.LoadLevel(name_next_scene);
+            Application.LoadLevel(1);
         }
 
     }
