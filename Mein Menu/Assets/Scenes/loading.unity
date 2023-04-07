@@ -801,6 +801,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c0545c926bfb244a083df56f2766d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Load_akademy: {fileID: 0}
+  Load_koncern: {fileID: 0}
+  Slide_line: {fileID: 0}
+  Timer: 0
 --- !u!4 &1358655665
 Transform:
   m_ObjectHideFlags: 0
