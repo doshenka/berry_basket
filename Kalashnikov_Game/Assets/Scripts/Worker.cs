@@ -26,13 +26,13 @@ public class Worker : MonoBehaviour
         if (workPoints[pointIndex % workPoints.Count].workersAnimation == "")
         {
             yield return new WaitForSeconds(1);
-            StopAllCoroutines();
+            StopCoroutine(NextPoint());
             pointIndex++;
         }
         else if (!Animator.GetCurrentAnimatorStateInfo(0).IsName(workPoints[pointIndex % workPoints.Count].workersAnimation))
         {
             pointIndex++;
-            StopAllCoroutines(); 
+            StopCoroutine(NextPoint());
         }
     }
 

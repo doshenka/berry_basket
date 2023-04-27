@@ -10,16 +10,12 @@ public class MenuButton : MonoBehaviour
         Animator = GetComponent<Animator>();
     }
 
-    private void OnMouseEnter()
+    void OnMouseEnter()
     {
         Animator.SetBool("Mouse", true);
     }
     void OnMouseExit()
     {
         Animator.SetBool("Mouse", false);
-    }
-    void Update()
-    {
-        
     }
 }
