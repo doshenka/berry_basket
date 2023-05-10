@@ -15,6 +15,12 @@ public class Traffic_Lights_Manager : MonoBehaviour
         state_value %= 2;
         StartCoroutine(Timer());
     }
+    public void SetState(int newState)
+    {
+        StopCoroutine(Timer());
+        state_value = newState;
+        StartCoroutine(Timer());
+    }
     void Start()
     {
         StartCoroutine(Timer());

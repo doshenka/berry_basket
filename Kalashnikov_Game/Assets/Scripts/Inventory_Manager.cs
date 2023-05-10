@@ -40,7 +40,7 @@ public class Inventory_Manager : MonoBehaviour
             {
                 itemBag[i] = newItem;
                 UpdateInventory();
-                Debug.Log($"Item {newItem.name} has successfully added to inventory");
+                Debug.Log($"Item {newItem.itemName} has successfully added to inventory");
                 return;
             }
         }

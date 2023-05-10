@@ -10,6 +10,7 @@ public class Avatar_Script : MonoBehaviour
     private int relativelyPointer;
     public GameObject textObject;
     public GameObject spacePanel;
+    private float typingSpeed = 0.05f;
     private int NextWordLength(int position)
     {
         int length = 0;
@@ -22,7 +23,7 @@ public class Avatar_Script : MonoBehaviour
     }
     private IEnumerator TextTimer()
     {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(typingSpeed);
         
         textObject.GetComponent<TMPro.TextMeshProUGUI>().text += text[pointer];
         if (text[pointer] == ' ' && pointer < text.Length)
