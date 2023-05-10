@@ -12,7 +12,8 @@ public class Level_Circle : MonoBehaviour
 
     [SerializeField] private GameObject Player;
     [SerializeField] private string SceneName;
-
+    public GameObject EndFirstLevelPanel;
+    /*
     void OnMouseEnter()
     {
         if (DestinationFromPlayer() < 30)
@@ -25,15 +26,31 @@ public class Level_Circle : MonoBehaviour
         if (DestinationFromPlayer() < 2)
             SceneManager.LoadScene(SceneName);
     }
-
+    */
+    private IEnumerator NextLevel()
+    {
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        PlayerPrefs.SetString("nextSceneName", SceneName);
+        SceneManager.LoadScene("Load Menu");
+    }
     void Update()
     {
-        if (DestinationFromPlayer() < 2)
-            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        
+        if(DestinationFromPlayer() <= 2)
+        {
+            Player.GetComponent<PlayerMovement>().inPlayerController = false;
+            EndFirstLevelPanel.SetActive(true);
+            StartCoroutine(NextLevel());
+        }
+        else if (DestinationFromPlayer() < 8)
+            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+        else
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
-
+    /*
     void OnMouseExit()
     {
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
+    */
 }

@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 343551585}
   - component: {fileID: 343551586}
   - component: {fileID: 343551587}
+  - component: {fileID: 343551588}
   m_Layer: 0
   m_Name: Play_Button
   m_TagString: Untagged
@@ -441,6 +442,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 415.68182, y: 116.37294}
   m_EdgeRadius: 0
+--- !u!114 &343551588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343551583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6fd98582e22af4bb9b8093729feea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &393273943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1867,6 +1880,7 @@ GameObject:
   - component: {fileID: 1654570843}
   - component: {fileID: 1654570842}
   - component: {fileID: 1654570841}
+  - component: {fileID: 1654570845}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1958,6 +1972,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!95 &1654570845
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654570840}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1677422477
 GameObject:
   m_ObjectHideFlags: 0

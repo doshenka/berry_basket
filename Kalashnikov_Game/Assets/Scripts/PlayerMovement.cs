@@ -23,8 +23,12 @@ public class PlayerMovement : MonoBehaviour
     public Item_Panel_Script itemPanel;
     public Item selectedItem;
 
+    // объекты первого уровня
     public GameObject carInventoryMarker;
     public GameObject firstStepMarker;
+
+    // объекты второго уровня
+    public GameObject gearBoxMarker;
 
     public bool getWorkPass;
     private void WallChecker()
@@ -56,11 +60,9 @@ public class PlayerMovement : MonoBehaviour
     // события уровня 1
     private IEnumerator StartLevel_1()
     {
-        //itemPanel.GetComponent<Animator>().Play("Item_Panel_Default 0"); открытие панели описания предмета
         yield return new WaitForSeconds(0.5f);
         avatar.GetComponent<Animator>().Play("Avatar Open");
-        //avatar.SetText("Приветствую, рабочий! Ты вот-вот отправишься на свой первый рабочий день на заводе. Осталось совсем немного! Для того, чтобы попасть на завод, необходимо преодолеть две дороги. Не спеши, вспомни правила ПДД, прежде чем переходить дорогу.");
-        avatar.SetText("a");
+        avatar.SetText("Приветствую, коллега! Сегодня ваш первый рабочий день!На заводе необходимо знать правила техники безопасности. И сейчас вам предстоит с ними ознакомиться! (Передвигайтесь, кликая на место, куда хотите отправиться).");
         avatar.TextType();
         yield return new WaitUntil(() => avatar.gameObject.activeSelf == false);
         Animator.SetBool("LevelStart", true);
@@ -72,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator FirstCarInteraction()
     {
         avatar.GetComponent<Animator>().Play("Avatar Open");
-        avatar.SetText("Нажмите на иконку лупы над вашей машиной и возьмите появишвийся пропуск, кликнув на него.");
+        avatar.SetText("Вот-вот вы уже отправитесь на работу! Немного осталось! Чтобы попасть на Концерн, не забудьте взять пропуск. Нажмите на лупу над вашей машиной и заберите его.Просто кликните на появившийся пропуск.");
         avatar.TextType();
         yield return new WaitUntil(() => getWorkPass == true);
         inPlayerController = false;
@@ -82,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator FirstStepMovement()
     {
         avatar.GetComponent<Animator>().Play("Avatar Open");
-        avatar.SetText("Отлично! Теперь пройдите к указанной точке, нажам на марекр со знаком '!'.");
+        avatar.SetText("Отлично! Теперь нужно подойти к пешеходному переходу. Нажмите на маркер с восклицательным знаком.");
         avatar.TextType();
         yield return new WaitUntil(() => avatar.gameObject.activeSelf == false);
         firstStepMarker.SetActive(true);
@@ -93,12 +95,25 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitUntil(() => firstStepMarker.activeSelf == false);
         inPlayerController = false;
-        avatar.SetText("Класс! Остался последний шаг - перейти дорогу. Будь внимателен и не нарушай ПДД!");
+        avatar.SetText("Класс! Осталось последнее задание - надо перейти две дороги. Не спеши, вспомни правила ПДД и будь внимателен!");
         avatar.TextType();
         yield return new WaitUntil(() => avatar.gameObject.activeSelf == false);
         inPlayerController = true;
-    }    
+    }
     // события уровня 2
+    private IEnumerator StartLevel_2()
+    {
+        yield return new WaitForSeconds(0.5f);
+        avatar.GetComponent<Animator>().Play("Avatar Open");
+        avatar.SetText("Добро пожаловать на Концерн Калашников! Сейчас вам предстоит выполнить здесь первое задание. Используйте ваш пропуск и преодолейте КПП. (Кликните на логотип Концерна).");
+        avatar.TextType();
+        yield return new WaitUntil(() => avatar.gameObject.activeSelf == false);
+        Animator.SetBool("LevelStart", true);
+        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
+        gearBoxMarker.SetActive(true);
+        inPlayerController = true;
+    }
     // конец списка событий
 
     void Start()
@@ -110,6 +125,10 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(StartLevel_1());
             carInventoryMarker.SetActive(false);
             firstStepMarker.SetActive(false);
+        }
+        else if (SceneManager.GetActiveScene().name == "FirstFactoryScene")
+        {
+            StartCoroutine(StartLevel_2());
         }
     }
     private void Flip()
