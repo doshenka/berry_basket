@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638186373101270948
-    m_Hash: 1010242877
+      ticks: 638195018168012014
+    m_Hash: 1966945893
   m_LockFileStatus:
     m_FilePath: C:/Users/d.a.tyuftina/Documents/GitHub/berry_basket/Mein Menu/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638186373266999445
-    m_Hash: 1035663092
+      ticks: 638195018168012014
+    m_Hash: 1132395109
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:

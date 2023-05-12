@@ -7,7 +7,7 @@ public class settings : MonoBehaviour
 {
     public Sprite music_on, music_off;
 
-    void Start () {
+    /*void Start () {
         if (gameObject.name == "Music") {
             if (PlayerPrefs.GetString () == "off") {
                 GetComponent <Image> ().sprite = music_off;
@@ -31,6 +31,6 @@ public class settings : MonoBehaviour
                 }
             /*case "Bright":
                 ;*/
-        }
-    }
+        /*}
+    }*/
 }
