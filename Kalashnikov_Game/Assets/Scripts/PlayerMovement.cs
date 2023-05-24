@@ -103,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
     // события уровня 2
     private IEnumerator StartLevel_2()
     {
+        inventory.GetItem(itemCollection.itemCollection[0]);
+        inventory.GetItem(itemCollection.itemCollection[1]);
         yield return new WaitForSeconds(0.5f);
         avatar.GetComponent<Animator>().Play("Avatar Open");
         avatar.SetText("Добро пожаловать на Концерн Калашников! Сейчас вам предстоит выполнить здесь первое задание. Используйте ваш пропуск и преодолейте КПП. (Кликните на логотип Концерна).");
@@ -132,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     private void Flip()
-    {   
+    {  
         facingRight = !facingRight;
         gameObject.GetComponent<SpriteRenderer>().flipX = !gameObject.GetComponent<SpriteRenderer>().flipX;
     }

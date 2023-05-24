@@ -24,14 +24,22 @@ public class GearBoxMarker : MonoBehaviour
         avatar.TextType();
         Player.inPlayerController = true;
     }
+    private IEnumerator NoWine()
+    {
+        avatar.SetText("Алкоголю на заводе не место! Все запрещенные предметы изымаются на входе на завод и возвращаются после окончания рабочего дня.");
+        avatar.TextType();
+        Player.inventory.DeleteItemFromCell(1);
+        yield return new WaitUntil(() => avatar.gameObject.activeSelf == false);
+        Player.SetTargetPosotion(new Vector2(-429, 90));
+        Player.SetAgentPosition();
+        StartCoroutine(GearBoxActions());
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<PlayerMovement>() != null)
         {
             Player.inPlayerController = false;
-            Player.SetTargetPosotion(new Vector2(-429, 90));
-            Player.SetAgentPosition();
-            StartCoroutine(GearBoxActions());
+            StartCoroutine(NoWine());
         }
     }
 }

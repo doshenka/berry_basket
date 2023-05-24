@@ -22,18 +22,28 @@ public class Worker : MonoBehaviour
     }
     private IEnumerator NextPoint()
     {
-        Animator.Play(workPoints[pointIndex % workPoints.Count].workersAnimation);
+        
+        
+        //Animator.Play(workPoints[pointIndex % workPoints.Count].workersAnimation);
+        /*
         if (workPoints[pointIndex % workPoints.Count].workersAnimation == "")
         {
             yield return new WaitForSeconds(1);
-            StopCoroutine(NextPoint());
             pointIndex++;
+            //StopCoroutine(NextPoint());
+            
         }
         else if (!Animator.GetCurrentAnimatorStateInfo(0).IsName(workPoints[pointIndex % workPoints.Count].workersAnimation))
         {
+            yield return new WaitForSeconds(1);
             pointIndex++;
-            StopCoroutine(NextPoint());
+            //StopCoroutine(NextPoint());
         }
+        */
+        yield return new WaitForSeconds(10);
+        pointIndex++;
+        Agent.SetDestination(target.position);
+        StartCoroutine(NextPoint());
     }
 
     private void Start()
@@ -43,24 +53,42 @@ public class Worker : MonoBehaviour
         Agent.enabled = true;
         Agent.updateRotation = false;
         Agent.updateUpAxis = false;
+        Animator.Play("Stand_Animation");
+        StartCoroutine(NextPoint());
     }
 
     private void FixedUpdate()
     {
-        if (workPoints.Count > 0)
+        target = workPoints[pointIndex % workPoints.Count].transform;
+        distanceToNextPoint = Vector3.Distance(target.position, transform.position);
+        
+        /*
+        if (distanceToNextPoint > 0.1f)
         {
-            target = workPoints[pointIndex % workPoints.Count].transform;
-            distanceToNextPoint = Vector3.Distance(target.position, transform.position);
-            if (distanceToNextPoint > 4)
-            {
-                Agent.enabled = true;
-                Agent.SetDestination(target.position);
-            }
-            else
-            {
-                Agent.enabled = false;
-                StartCoroutine(NextPoint());
-            }
+            Agent.enabled = true;
+            Agent.SetDestination(target.position);
+        }
+        */
+        /*
+        else
+        {
+            Agent.enabled = false;
+        }
+        */
+        if (target.position.x != transform.position.x && target.position.y != transform.position.y && target.position != new Vector3(0, 0, 0) && target.position.y > transform.position.y)
+        {
+            Animator.SetBool("IsUpWalking", false);
+            Animator.SetBool("IsDownWalking", true);
+        }
+        else if (target.position.x != transform.position.x && target.position.y != transform.position.y && target.position != new Vector3(0, 0, 0) && target.position.y < transform.position.y)
+        {
+            Animator.SetBool("IsUpWalking", true);
+            Animator.SetBool("IsDownWalking", false);
+        }
+        else
+        {
+            Animator.SetBool("IsUpWalking", false);
+            Animator.SetBool("IsDownWalking", false);
         }
     }
 }

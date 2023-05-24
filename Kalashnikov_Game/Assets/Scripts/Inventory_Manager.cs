@@ -22,11 +22,13 @@ public class Inventory_Manager : MonoBehaviour
     {
         for(int i = 0; i < bagCapacity; i++)
         {
-            if(itemBag[i] != null)
+            if (itemBag[i] != null)
             {
                 itemImages[i].transform.GetChild(0).GetComponent<Image>().sprite = itemBag[i].sprite;
             }
-            if(i == currentItemIndex)
+            else
+                itemImages[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
+            if (i == currentItemIndex)
                 itemImages[i].transform.GetChild(1).gameObject.SetActive(true);
             else
                 itemImages[i].transform.GetChild(1).gameObject.SetActive(false);
@@ -44,6 +46,11 @@ public class Inventory_Manager : MonoBehaviour
                 return;
             }
         }
+    }
+    public void DeleteItemFromCell(int id)
+    {
+        itemBag[id] = null;
+        UpdateInventory();
     }
     private void CurrentItemChanging()
     {
