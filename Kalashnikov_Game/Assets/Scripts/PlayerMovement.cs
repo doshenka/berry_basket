@@ -161,6 +161,9 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+            avatar.TypeFullText();
+
         if (inPlayerController)
             WallChecker();
         

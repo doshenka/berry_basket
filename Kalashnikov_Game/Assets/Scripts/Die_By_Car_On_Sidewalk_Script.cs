@@ -28,6 +28,7 @@ public class Die_By_Car_On_Sidewalk_Script : MonoBehaviour
         avatar.TextType();
         yield return new WaitUntil(() => avatar.gameObject.activeSelf == false);
         SceneManager.LoadScene("GameScene1");
+        PlayerPrefs.SetString("SkippingFirstSceneDialogs", "true");
         Destroy(gameObject);
     }
 

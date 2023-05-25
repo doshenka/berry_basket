@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Avatar_Script : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class Avatar_Script : MonoBehaviour
     private int relativelyPointer;
     public GameObject textObject;
     public GameObject spacePanel;
-    private float typingSpeed = 0.05f;
+    private float typingSpeed;
+    private const float base_typing_speed = 0.05f;
+    private bool SkippingFirstSceneDialogs;
     private int NextWordLength(int position)
     {
         int length = 0;
@@ -28,10 +31,11 @@ public class Avatar_Script : MonoBehaviour
         textObject.GetComponent<TMPro.TextMeshProUGUI>().text += text[pointer];
         if (text[pointer] == ' ' && pointer < text.Length)
         {
-            if(relativelyPointer + NextWordLength(pointer + 1) > 55)
+            if(relativelyPointer + NextWordLength(pointer + 1) > 190)
             {
                 spacePanel.SetActive(true);
                 yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+                typingSpeed = base_typing_speed;
                 spacePanel.SetActive(false);
                 textObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 relativelyPointer = 0;
@@ -69,9 +73,21 @@ public class Avatar_Script : MonoBehaviour
         gameObject.GetComponent<Animator>().Play("Avatar Open");
         StartCoroutine(StartTyping());
     }
+    public void TypeFullText()
+    {
+        if(SceneManager.GetActiveScene().name == "GameScene1" && SkippingFirstSceneDialogs)
+        {
+            typingSpeed = 0.001f;
+        }
+    }
     private void Start()
     {
         textObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
         spacePanel.SetActive(false);
+        typingSpeed = base_typing_speed;
+        if(PlayerPrefs.GetString("SkippingFirstSceneDialogs") == "true")
+            SkippingFirstSceneDialogs = true;
+        else
+            SkippingFirstSceneDialogs = false;
     }
 }
